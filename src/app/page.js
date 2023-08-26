@@ -1,3 +1,5 @@
+import Feed from "@components/Feed";
+
 const Home = () => (
   <section className='w-full flex-center flex-col mt-10'>
     <h1 className='head_text text-center'>
@@ -8,6 +10,7 @@ const Home = () => (
     <p className='desc text-center'>
     Unleash Your Inner Chef: Explore, Create, and Share Delicious Recipes with Foodies Worldwide.
     </p>
+    <Feed />
   </section>
 );
 
