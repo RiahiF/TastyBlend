@@ -1,6 +1,11 @@
 import Link from 'next/link'
+const Form = ({type, post, setPost, image, setImage, submitting, handleSubmit}) => {
 
-const Form = ({type, post, setPost, submitting, handleSubmit}) => {
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+      };
+
   return (
     <section className='w-full max-w-full flex-start flex-col'>
         <h1 className='head_text text-left'>
@@ -16,6 +21,17 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
         onSubmit={handleSubmit}
         className='w-full mt-10 max-w-2xl flex flex-col gap-7 glassmorphism'
         >
+            <label>
+                <span className='font-satoshi font-semibold text-base text-gray-700'>
+                    Recipe Image
+                </span>
+                <input
+                    type='file'
+                    accept='image/*'
+                    onChange={handleImageUpload}
+                    className='form_input'
+                />
+            </label>    
             <label>
                 <span className='font-satoshi font-semibold text-base text-gray-700'>Your Recipe Title</span>
                 <input

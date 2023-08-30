@@ -41,28 +41,40 @@ const RecipeCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
             <h3 className="font-satoshi font-semibold text-gray-900">
               {post.creator?.username}
             </h3>
-            <p className="font-inter text-sm text-gray-500">
+            {/* <p className="font-inter text-sm text-gray-500">
               {post.creator?.email}
-            </p>
+            </p> */}
           </div>
         </div>
-        <div className="copy_btn" onClick={handleCopy}>
+        {/* <div className="copy_btn" onClick={handleCopy}>
           <Image
           src={copied === post.recipe ? '/assets/icons/tick.svg' : '/assets/icons/copy.svg'}
           width={15}
           height={15}
+          alt="copy"
+          />
+        </div> */}
+      </div>
+      {post.imageUrl && (
+        <div className="recipe-image">
+          <img
+            className="object-cover w-full h-52 rounded-lg my-2 cursor-pointer"
+            src={post.imageUrl}
+            alt="recipe_image"
           />
         </div>
-      </div>
-      <p className="my-4 font-satoshi text-sm text-gray-700">{post.recipe}</p>
+      )}
+      <p className="my-4 font-satoshi text-2xl text-slate-950 font-medium cursor-pointer">{post.title}</p>
+      {/* <p className="my-4 font-satoshi text-sm text-gray-500 font-thin">{post.recipe}</p> */}
       <p
       className="font-inter text-sm blue_gradient cursor-pointer"
       handleTagClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         {post.tag}
       </p>
+
       {session?.user.id === post.creator._id && pathName === '/profile' && (
-        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+        <div className=" flex-center gap-4 border-t border-gray-100 ">
           <p
           className="font-inter text-sm green_gradient cursor-pointer"
           onClick={handleEdit}

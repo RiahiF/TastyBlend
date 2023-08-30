@@ -16,7 +16,11 @@ const RecipeSchema = new Schema({
   tag: {
     type: String,
     required: [true, 'Tag is required.'],
-  }
+  },
+  imageUrl: {
+    type: String, // Store the Cloudinary image URL here
+    required: [true, 'Image URL is required.'],
+  },
 });
 
 const Recipe = models.Recipe || model('Recipe', RecipeSchema);

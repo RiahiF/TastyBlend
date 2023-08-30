@@ -21,26 +21,27 @@ export const GET = async (req, {params}) =>{
 }
 
 // PATCH
-export const PATCH = async (req, {params})=>{
-    const { recipe, tag } = await req.json()
-    
+export const PATCH = async (req, { params }) => {
+    const { title, recipe, tag } = await req.json();
+
     try {
-        await connectDB()
+        await connectDB();
 
-        const existingRecipe = await Recipe.findById(params.id)
+        const existingRecipe = await Recipe.findById(params.id);
 
-        if(!existingRecipe){
-            return new Response('Recipe not found', {status:404})
+        if (!existingRecipe) {
+            return new Response('Recipe not found', { status: 404 });
         }
 
-        existingRecipe.recipe = recipe
-        existingRecipe.tag= tag
+        existingRecipe.title = title;
+        existingRecipe.recipe = recipe;
+        existingRecipe.tag = tag;
 
-        await existingRecipe.save()
+        await existingRecipe.save();
 
-        return new Response(JSON.stringify(existingRecipe), {status:200})
+        return new Response(JSON.stringify(existingRecipe), { status: 200 });
     } catch (error) {
-        return new Response('Failed to update the recipe', {status:500})
+        return new Response('Failed to update the recipe', { status: 500 });
     }
 }
 
