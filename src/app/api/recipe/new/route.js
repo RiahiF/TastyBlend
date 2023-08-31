@@ -1,7 +1,7 @@
 import { connectDB } from "@utils/database";
 import Recipe from "@models/recipe";
 export const POST = async (req) => {
-    const { userId, title, recipe, tag, imageUrl } = await req.json();
+    const { userId, name, dishType, time, servings, difficulty, ingredients, directions, imageUrl } = await req.json();
   
     try {
       // connect to DB
@@ -9,9 +9,13 @@ export const POST = async (req) => {
       // create new recipe
       const newRecipe = new Recipe({
         creator: userId,
-        title,
-        recipe,
-        tag,
+        name,
+        dishType,
+        time,
+        servings,
+        difficulty,
+        ingredients,
+        directions,
         imageUrl, // Store the image URL
       });
       // save the recipe

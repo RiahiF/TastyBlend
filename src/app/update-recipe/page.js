@@ -10,9 +10,13 @@ const EditRecipe = () => {
     const recipeId = searchParams.get('id')
     const [submitting, setSubmitting] = useState(false)
     const [post, setPost] = useState({
-        title:'',
-        recipe:'',
-        tag:'',
+      name: '',
+      dishType: [],
+      time: '',
+      servings: '',
+      difficulty: '',
+      ingredients: '',
+      directions: '',
     })
 
     useEffect(()=>{
@@ -22,9 +26,13 @@ const EditRecipe = () => {
             const data = await respone.json()
 
             setPost({
-                title: data.title,
-                recipe: data.recipe,
-                tag: data.tag
+                name: data.name,
+                dishType: data.dishType,
+                time: data.time,
+                servings: data.servings,
+                difficulty: data.difficulty,
+                ingredients: data.ingredients,
+                directions: data.directions
             })
         }
 
@@ -44,9 +52,13 @@ const EditRecipe = () => {
         {
           method: 'PATCH',
           body: JSON.stringify({
-            title: post.title,
-            recipe: post.recipe,
-            tag: post.tag
+            name: post.name,
+            dishType: post.dishType,
+            time: post.time,
+            servings: post.servings,
+            difficulty: post.difficulty,
+            ingredients: post.ingredients,
+            directions: post.directions,
           })
         })
         if(response.ok){

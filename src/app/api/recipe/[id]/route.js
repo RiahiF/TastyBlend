@@ -22,7 +22,7 @@ export const GET = async (req, {params}) =>{
 
 // PATCH
 export const PATCH = async (req, { params }) => {
-    const { title, recipe, tag } = await req.json();
+    const { name, dishType, time, servings, difficulty, ingredients, directions } = await req.json();
 
     try {
         await connectDB();
@@ -33,9 +33,14 @@ export const PATCH = async (req, { params }) => {
             return new Response('Recipe not found', { status: 404 });
         }
 
-        existingRecipe.title = title;
-        existingRecipe.recipe = recipe;
-        existingRecipe.tag = tag;
+        existingRecipe.name = name;
+        existingRecipe.dishType = dishType;
+        existingRecipe.time = time;
+        existingRecipe.servings = servings;
+        existingRecipe.difficulty = difficulty;
+        existingRecipe.ingredients = ingredients;
+        existingRecipe.directions = directions;
+
 
         await existingRecipe.save();
 

@@ -10,9 +10,13 @@ const CreateRecipe = () => {
   const { data: session } = useSession();
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
-    title: '',
-    recipe: '',
-    tag: '',
+    name: '',
+    dishType: [],
+    time: '',
+    servings: '',
+    difficulty: '',
+    ingredients: '',
+    directions: '',
   });
   const [image, setImage] = useState(null); // New state for image
 
@@ -26,10 +30,14 @@ const CreateRecipe = () => {
       const response = await fetch('/api/recipe/new', {
         method: 'POST',
         body: JSON.stringify({
-          title: post.title,
-          recipe: post.recipe,
+          name: post.name,
+          dishType: post.dishType,
+          time: post.time,
+          servings: post.servings,
+          difficulty: post.difficulty,
+          ingredients: post.ingredients,
+          directions: post.directions,
           userId: session?.user.id,
-          tag: post.tag,
           imageUrl: imageUrl,
         }),
       });

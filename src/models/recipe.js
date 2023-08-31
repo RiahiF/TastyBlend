@@ -5,17 +5,33 @@ const RecipeSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
-  title: {
+  name: {
     type: String,
-    required: [true, 'Title is required.'],
+    required: [true, 'Name is required.'],
   },
-  recipe: {
+  dishType: [{
     type: String,
-    required: [true, 'Recipe is required.'],
+    required: [true, 'DishType is required.'],
+  }],
+  time: {
+    type: String,
+    required: [true, 'Time is required.'],
   },
-  tag: {
+  servings: {
     type: String,
-    required: [true, 'Tag is required.'],
+    required: [true, 'Servings is required.'],
+  },
+  difficulty: {
+    type: String,
+    required: [true, 'Difficulty is required.'],
+  },
+  ingredients: {
+    type: String,
+    required: [true, 'Ingredients is required.'],
+  },
+  directions: {
+    type: String,
+    required: [true, 'Directions is required.'],
   },
   imageUrl: {
     type: String, // Store the Cloudinary image URL here
