@@ -1,10 +1,11 @@
 import '@styles/globals.css'
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
-
+import Head from 'next/head';
 export const metadata = {
   title: "KitchenFolio",
-  description: "Explore, create & share mouthwatering recipes on our platform. Join now & savor the joy of cooking!",
+  description: "Discover a world of mouthwatering recipes on KitchenFolio. Join our culinary community to explore, create, and share delicious dishes!",
+  siteUrl: "https://kitchen-folio.vercel.app", // Replace with your site URL
 };
 
 const RootLayout = ({ children }) => (
