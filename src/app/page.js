@@ -8,7 +8,8 @@ const Home = () => (
       <span className='orange_gradient text-center'> Hundreds of Delicious Recipes</span>
     </h1>
     <p className='desc text-center'>
-    Unleash Your Inner Chef: Explore, Create, and Share Delicious Recipes with Foodies Worldwide.
+   Dive into a world of exquisite flavors and innovative recipes that will ignite your culinary creativity.
+    Explore a diverse collection of dishes, from time-honored classics to cutting-edge creations.
     </p>
     <Feed />
   </section>
