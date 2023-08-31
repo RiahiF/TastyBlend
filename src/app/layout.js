@@ -4,7 +4,7 @@ import Provider from "@components/Provider";
 
 export const metadata = {
   title: "KitchenFolio",
-  description: "Create & Share Food Recipes",
+  description: "Explore, create & share mouthwatering recipes on our platform. Join now & savor the joy of cooking!",
 };
 
 const RootLayout = ({ children }) => (
