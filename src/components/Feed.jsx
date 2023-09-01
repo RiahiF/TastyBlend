@@ -28,8 +28,8 @@ const Feed = () => {
     return posts.filter(
       (item) =>
         regex.test(item.creator.username) ||
-        regex.test(item.tag) ||
-        regex.test(item.recipe)
+        regex.test(item.dishType) ||
+        regex.test(item.name)
     );
   };
 

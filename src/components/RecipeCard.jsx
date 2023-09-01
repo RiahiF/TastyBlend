@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useSession } from "next-auth/react"
 import { usePathname, useRouter } from "next/navigation"
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import { gray } from '@mui/material/colors';
+
 
 const RecipeCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
 
@@ -84,7 +84,7 @@ const RecipeCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
       </div>
 
 
-      {session?.user.id === post.creator?._id && pathName === '/profile' && (
+      {session?.user.id === post.creator._id && pathName === '/profile' && (
         <div className=" flex-center gap-4 border-t border-gray-100 ">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"
