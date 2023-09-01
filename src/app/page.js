@@ -12,6 +12,7 @@ const Home = () => (
     Explore a diverse collection of dishes, from time-honored classics to cutting-edge creations.
     </p>
     <Feed />
+
   </section>
 );
 

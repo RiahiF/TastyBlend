@@ -1,7 +1,6 @@
 'use client'
 import {useState, useEffect} from 'react'
 import RecipeCard from './RecipeCard.jsx'
-
 const RecipeCardList = ({data, handleTagClick}) => {
   return(
     <div className='mt-16 prompt_layout'>
