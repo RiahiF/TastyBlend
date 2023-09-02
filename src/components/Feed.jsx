@@ -52,17 +52,15 @@ const Feed = () => {
     const searchResult = filterRecipes(tagName);
     setSearchedResults(searchResult);
   };
+useEffect(()=>{
+    const fetchRecipes = async () =>{
+      const respone = await fetch('/api/recipe')
+      const data = await respone.json()
 
-const fetchPosts = async () => {
-    const response = await fetch("/api/recipe");
-    const data = await response.json();
-
-    setPosts(data);
-  };
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+      setPosts(data)
+    }
+    fetchRecipes()
+  },[])
 
 
   return (
