@@ -90,7 +90,7 @@
 }
 
 .orange_gradient {
-  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-lime-500 via-emerald-600 to-green-500 bg-clip-text text-transparent;
 }
 
 .green_gradient {
@@ -150,7 +150,7 @@
 
 /* PromptCard Component */
 .prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding   backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
 }
 
 .flex-center {
