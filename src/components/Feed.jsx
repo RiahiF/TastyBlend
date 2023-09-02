@@ -57,7 +57,7 @@ const fetchPosts = async () => {
     const response = await fetch("/api/recipe");
     const data = await response.json();
 
-    setAllPosts(data);
+    setPosts(data);
   };
 
   useEffect(() => {
