@@ -53,15 +53,16 @@ const Feed = () => {
     setSearchedResults(searchResult);
   };
 
-  useEffect(()=>{
-    const fetchRecipes = async () =>{
-      const respone = await fetch('/api/recipe')
-      const data = await respone.json()
+const fetchPosts = async () => {
+    const response = await fetch("/api/recipe");
+    const data = await response.json();
 
-      setPosts(data)
-    }
-    fetchRecipes()
-  },[])
+    setAllPosts(data);
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
 
   return (
