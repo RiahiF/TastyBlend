@@ -3,16 +3,20 @@ import { useState } from "react"
 import Image from "next/image"
 import { useSession } from "next-auth/react"
 import { usePathname, useRouter } from "next/navigation"
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-
+import AccessAlarmsIcon from '@mui/icons-material/AccessAlarms';
+import { useSearchParams } from "next/navigation"
 
 const RecipeCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
-
+  const searchParams = useSearchParams();
+  const postId = post._id;
   const { data: session } = useSession()
   const pathName = usePathname()
   const router = useRouter()
   const [copied, setCopied] = useState('')
 
+  const handleClick = () => {
+    router.push(`/recipe-details?id=${postId}`);
+  };
   const handleProfileClick = () => {
     console.log(post);
 
@@ -29,8 +33,8 @@ const RecipeCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
     setTimeout(() => setCopied(''), 3000)
   }
   return (
-    <div className="prompt_card">
-      <div className="absolute left-1 top-1">
+    <div className="prompt_card" >
+      <div className="absolute left-2 top-2">
         <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer" onClick={handleProfileClick}>
           <Image
           src={post.creator?.image}
@@ -58,30 +62,32 @@ const RecipeCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
         </div> */}
       </div>
       {post.imageUrl && (
-        <div className="recipe-image">
-          <img
-            className="object-cover w-full h-52 rounded-lg  cursor-pointer"
+        <div className="recipe-image" >
+          <Image
+            className="object-cover w-full h-52 rounded-md  cursor-pointer"
+            onClick={handleClick}
             src={post.imageUrl}
             alt="recipe_image"
+            width={400}
+            height={400}
           />
         </div>
       )}
-      <p className="ml-3 mt-2 font-satoshi text-2xl text-slate-950 font-medium cursor-pointer">{post.name}</p>
-      <p className="ml-3 flex items-center justify-items-center gap-2 font-satoshi text-2xl text-gray-400 font-medium"><AccessTimeIcon sx={{ fontSize: 20 }}  />
-      <span className="flex items-center gap-2 mt-1 font-satoshi text-[18px] text-gray-950 font-medium  cursor-pointer mb-1 w-full">{post.time} <div className="w-[6px] h-[6px] rounded-full bg-gray-400" /> {post.difficulty}</span>
+      <p className="ml-3 mt-2 font-satoshi text-2xl text-slate-950 font-medium cursor-pointer" onClick={handleClick}>{post.name}</p>
+      <p className="ml-3 flex items-center text-center justify-items-center  gap-2 font-satoshi text-2xl text-gray-400 font-medium"><AccessAlarmsIcon className="mt-0.5" sx={{ fontSize: 19 }}  />
+      <span className="flex items-center text-center gap-2 mt-1 font-satoshi text-[16px] text-gray-950 font-medium  cursor-pointer  w-full">{post.time} <div className="w-[6px] h-[6px] rounded-full bg-gray-400" /> {post.difficulty}</span>
       </p>
       {/* <p className="my-4 font-satoshi text-sm text-gray-500 font-thin">{post.recipe}</p> */}
       <div className="font-inter text-sm mt-2  flex gap-2">
-        {post.dishType.map((type, index) => (
-          <span
-            key={index}
-            className="tag cursor-pointer bg-gray-200 w-fit text-slate-800 pt-1 pb-1 pl-2 pr-2 rounded-lg ml-3 mb-3 "
-            onClick={() => handleTagClick && handleTagClick(type)}
-          >
-            {type}
-          </span>
-        ))}
-      </div>
+  {post.dishType.map((type, index) => (
+    <span
+      key={index}
+      className="tag cursor-pointer bg-gray-200 w-fit text-gray-600 pt-1 pb-1 pl-3 pr-3 rounded-lg ml-3 mb-3 "
+    >
+      {type}
+    </span>
+  ))}
+</div>
 
 
       {session?.user.id === post.creator._id && pathName === '/profile' && (
